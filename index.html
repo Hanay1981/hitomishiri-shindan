@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>本当に人見知り？ 人見知り度診断 | ジブンwoカシカ</title>
+<meta name="description" content="緊張しやすさと、人と関わりたい気持ちは別の性質です。心理学の「シャイネス」と「社交性」の2軸から、あなたの人見知りタイプを20問・3分で可視化します。"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#05080f;--surface:#0a0f1a;--surface2:#101725;
+  --border:rgba(120,180,255,0.09);--border2:rgba(120,180,255,0.18);
+  --text:#e6edf8;--muted:#5a6a85;--faint:#141c2b;
+  --warm:#E8734A;--warm2:#B94E2C;--cool:#4AA8E8;--cool2:#2C72B9;--cream:#FFD9A0;
+}
+html,body{min-height:100vh;background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;-webkit-text-size-adjust:100%}
+body::before{content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse 50% 40% at 78% 12%,rgba(232,115,74,0.07),transparent),
+             radial-gradient(ellipse 45% 50% at 12% 88%,rgba(74,168,232,0.06),transparent);
+  pointer-events:none;z-index:0}
+.app{max-width:600px;margin:0 auto;padding:0 1.2rem 5rem;position:relative;z-index:1}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
+.fade-in{animation:fadeUp .5s cubic-bezier(.22,.68,0,1.1) forwards}
+
+/* TOP */
+.top{padding:3.2rem 0 2rem}
+.top-eye{font-size:.64rem;letter-spacing:.24em;color:var(--muted);margin-bottom:1rem;text-transform:uppercase;text-align:center}
+.top h1{font-size:1.5rem;font-weight:700;line-height:1.55;color:#fff;margin-bottom:.7rem;text-align:center;letter-spacing:.02em}
+.top-sub{font-size:.66rem;letter-spacing:.16em;color:var(--muted);margin-bottom:2.2rem;text-align:center}
+.intro-body{font-size:.87rem;line-height:2.05;color:#93a3bd;margin-bottom:1.5rem}
+.intro-body p{margin-bottom:.95rem}
+.intro-body em{color:var(--warm);font-style:normal;font-weight:500}
+.hook{border-left:2px solid var(--warm2);padding-left:1.2rem;margin:1.3rem 0;font-size:.87rem;line-height:1.95;color:#b3c0d6}
+.axis-box{background:var(--surface);border:.5px solid var(--border);border-radius:12px;padding:1.2rem;margin-bottom:1.4rem}
+.axis-box h4{font-size:.67rem;color:var(--muted);letter-spacing:.12em;margin-bottom:.9rem}
+.axis-list{display:flex;flex-direction:column;gap:.6rem}
+.axis-row{display:flex;align-items:flex-start;gap:.8rem;font-size:.8rem;line-height:1.75;color:#8494ae}
+.axis-tag{font-size:.65rem;font-weight:700;padding:2px 9px;border-radius:20px;flex-shrink:0;margin-top:2px;white-space:nowrap}
+.warn-box{background:rgba(232,115,74,.05);border:.5px solid rgba(232,115,74,.18);border-radius:10px;padding:.9rem 1.1rem;margin-bottom:1.5rem;font-size:.78rem;color:#8494ae;line-height:1.85}
+.btn-start{width:100%;padding:1.05rem;font-size:.98rem;font-weight:700;letter-spacing:.08em;border-radius:12px;border:none;background:linear-gradient(135deg,var(--warm),var(--warm2));color:#fff;cursor:pointer;transition:.25s;font-family:'Noto Sans JP',sans-serif}
+.btn-start:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(232,115,74,.3)}
+
+/* QUIZ */
+.quiz-wrap{padding-top:2.2rem}
+.prog-wrap{margin-bottom:1.6rem}
+.prog-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.55rem}
+.axis-pill{font-size:.66rem;font-weight:700;padding:3px 11px;border-radius:20px;letter-spacing:.06em}
+.q-cnt{font-size:.7rem;color:var(--muted)}
+.prog-bar{height:2.5px;background:var(--faint);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--warm2),var(--warm),var(--cream));border-radius:2px;transition:width .4s ease}
+.basis-note{font-size:.63rem;color:var(--muted);text-align:right;margin-top:.45rem;letter-spacing:.05em}
+.q-card{background:var(--surface);border:.5px solid var(--border);border-radius:14px;padding:1.5rem 1.4rem;margin-bottom:1.2rem}
+.q-text{font-size:.97rem;line-height:1.85;color:#fff;font-weight:500}
+.opts{display:flex;flex-direction:column;gap:.5rem}
+.opt-btn{width:100%;padding:.82rem 1rem;font-size:.85rem;font-family:'Noto Sans JP',sans-serif;border:.5px solid var(--border);border-radius:9px;background:var(--surface);color:#8494ae;cursor:pointer;text-align:left;transition:.18s}
+.opt-btn:hover{border-color:var(--border2);color:var(--text);background:var(--surface2)}
+.opt-btn.selected{border-color:var(--warm);color:#fff;background:rgba(232,115,74,.12)}
+.nav-row{display:flex;justify-content:flex-start;margin-top:1.2rem}
+.btn-prev{padding:.6rem 1.1rem;font-size:.76rem;font-family:'Noto Sans JP',sans-serif;border:.5px solid var(--border);border-radius:8px;background:transparent;color:var(--muted);cursor:pointer}
+.btn-prev:hover{color:var(--text);border-color:var(--border2)}
+
+/* LOADING */
+.loading{padding:6rem 0;text-align:center}
+.spinner{width:34px;height:34px;border:2px solid var(--faint);border-top-color:var(--warm);border-radius:50%;margin:0 auto 1.4rem;animation:spin .9s linear infinite}
+.loading p{font-size:.8rem;color:var(--muted);letter-spacing:.1em;animation:pulse 1.6s ease-in-out infinite}
+
+/* RESULT */
+.result-wrap{padding-top:2.2rem}
+.result-header{text-align:center;padding:2rem 1.2rem 2.2rem;background:var(--surface);border:.5px solid var(--border);border-radius:16px;margin-bottom:1.2rem}
+.result-label{font-size:.63rem;letter-spacing:.24em;color:var(--muted);margin-bottom:1rem}
+.result-type{font-size:1.45rem;font-weight:700;line-height:1.5;margin-bottom:.5rem}
+.result-one{font-size:.85rem;color:#93a3bd;line-height:1.9;margin-top:.9rem}
+
+/* MAP */
+.map-wrap{background:var(--surface);border:.5px solid var(--border);border-radius:14px;padding:1.4rem 1.2rem 1.1rem;margin-bottom:1.2rem}
+.map{position:relative;width:100%;max-width:300px;aspect-ratio:1;margin:0 auto;border-radius:10px;background:var(--faint);overflow:hidden}
+.map-q{position:absolute;display:flex;align-items:center;justify-content:center;font-size:.58rem;color:#44536b;text-align:center;line-height:1.45;padding:3px;pointer-events:none}
+.map-line{position:absolute;background:rgba(120,180,255,.13)}
+.map-dot{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--warm);box-shadow:0 0 0 4px rgba(232,115,74,.22);transform:translate(-50%,50%);transition:.6s cubic-bezier(.22,.68,0,1.1)}
+.map-axis-x,.map-axis-y{font-size:.62rem;color:var(--muted);text-align:center;letter-spacing:.08em}
+.map-axis-x{margin-top:.7rem}
+.map-axis-y{margin-bottom:.6rem}
+
+/* SCORES */
+.score-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.2rem}
+.score-card{background:var(--surface);border:.5px solid var(--border);border-radius:12px;padding:1.1rem}
+.score-name{font-size:.72rem;color:var(--muted);margin-bottom:.5rem;letter-spacing:.06em}
+.score-val{font-size:1.7rem;font-weight:300;line-height:1}
+.score-unit{font-size:.7rem;color:var(--muted);margin-left:.2rem}
+.score-bar{height:3px;background:var(--faint);border-radius:2px;overflow:hidden;margin-top:.7rem}
+.score-fill{height:100%;border-radius:2px;transition:width .8s ease}
+.score-note{font-size:.68rem;color:var(--muted);margin-top:.55rem;line-height:1.6}
+
+/* SECTIONS */
+.sec{background:var(--surface);border:.5px solid var(--border);border-radius:14px;padding:1.4rem;margin-bottom:1rem}
+.sec-label{font-size:.63rem;letter-spacing:.2em;color:var(--muted);margin-bottom:.9rem}
+.sec-body{font-size:.86rem;line-height:2.05;color:#93a3bd}
+.sec-body strong{color:var(--text);font-weight:500}
+.scene{display:flex;flex-direction:column;gap:.7rem}
+.scene-row{display:flex;gap:.75rem;align-items:flex-start;font-size:.84rem;line-height:1.8;color:#93a3bd}
+.scene-mark{color:var(--warm);flex-shrink:0;font-size:.7rem;margin-top:.45rem}
+.step{counter-reset:s;display:flex;flex-direction:column;gap:1rem}
+.step-row{display:flex;gap:.9rem;align-items:flex-start}
+.step-num{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:rgba(232,115,74,.15);color:var(--warm);font-size:.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step-txt{font-size:.85rem;line-height:1.9;color:#93a3bd}
+.step-txt b{display:block;color:var(--text);font-weight:500;margin-bottom:.15rem}
+
+/* RELIABILITY */
+.rel-box{background:var(--surface);border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.2rem;margin-bottom:1rem}
+.rel-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem}
+.rel-label{font-size:.66rem;letter-spacing:.14em;color:var(--muted)}
+.rel-badge{font-size:.72rem;font-weight:700;padding:3px 12px;border-radius:20px}
+.rel-note{font-size:.72rem;line-height:1.8;color:var(--muted)}
+
+.src{background:var(--surface);border:.5px solid var(--border);border-radius:12px;padding:1.2rem;margin-bottom:1rem}
+.src p{font-size:.75rem;color:var(--muted);line-height:1.95}
+.btn-retry{width:100%;padding:.9rem;font-size:.82rem;font-family:'Noto Sans JP',sans-serif;border:.5px solid var(--border);border-radius:10px;background:transparent;color:var(--muted);cursor:pointer;margin-top:.4rem}
+.btn-retry:hover{color:var(--text);border-color:var(--border2)}
+.quote{font-size:1.02rem;line-height:1.85;color:#fff;font-weight:500;padding:1rem 1.1rem;background:rgba(232,115,74,.08);border-radius:10px;border-left:2px solid var(--warm)}
+.micro{font-size:.68rem;line-height:1.75;color:var(--muted);margin-top:.9rem}
+.micro strong{color:#93a3bd;font-weight:500}
+.sub-list{display:flex;flex-direction:column;gap:1.05rem}
+.sub-row{}
+.sub-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.45rem}
+.sub-name{font-size:.86rem;color:var(--text);font-weight:500}
+.sub-ax{font-size:.64rem;letter-spacing:.06em;margin-right:.55rem;font-weight:700}
+.sub-val{font-size:1.05rem;font-weight:300}
+.sub-bar{height:3px;background:var(--faint);border-radius:2px;overflow:hidden}
+.sub-fill{height:100%;border-radius:2px;transition:width .8s ease}
+.sub-desc{font-size:.72rem;color:var(--muted);line-height:1.7;margin-top:.45rem}
+.sub-flag{display:inline-block;font-size:.63rem;font-weight:700;padding:1px 8px;border-radius:20px;margin-left:.5rem;white-space:nowrap}
+.sub-flag.low{background:rgba(232,115,74,.18);color:#E8734A}
+.sub-flag.high{background:rgba(94,203,138,.16);color:#5ECB8A}
+@media(max-width:400px){.score-grid{grid-template-columns:1fr}.top h1{font-size:1.32rem}}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- TOP -->
+<section id="topPage" class="fade-in">
+  <div class="top">
+    <div class="top-eye">AI × PSYCHOLOGY</div>
+    <h1>本当に人見知り？<br>人見知り度診断</h1>
+    <div class="top-sub">緊張しやすさ × 関わりたい気持ち ／ 全20問 ／ 約3分</div>
+  </div>
+
+  <div class="warn-box">
+    <strong style="color:#c8d4e6">はじめる前に、3つだけ。</strong><br>
+    ・答えるのはご自身の主観なので、結果には幅が出ます。<br>
+    ・「緊張しやすいこと」と「人と関わりたくないこと」は、実は別のことです。この診断はその2つを分けて見ます。<br>
+    ・受け取り方を決めるのは、いつもご本人です。
+  </div>
+
+  <div class="axis-box">
+    <h4>この診断でわかること</h4>
+    <div class="axis-list">
+      <div class="axis-row"><span class="axis-tag" style="background:rgba(143,184,232,.18);color:#8FB8E8">01</span><span>緊張しやすさと、人と関わりたい気持ちが、それぞれどれくらい出ているか</span></div>
+      <div class="axis-row"><span class="axis-tag" style="background:rgba(143,184,232,.18);color:#8FB8E8">02</span><span>「人見知りに見えるか」と「本当に人と関わりたいか」は、別だということ</span></div>
+      <div class="axis-row"><span class="axis-tag" style="background:rgba(143,184,232,.18);color:#8FB8E8">03</span><span>緊張がどんな形で出やすいか（身体反応・言葉につまる・動きのぎこちなさ）</span></div>
+    </div>
+  </div>
+
+  <div class="axis-box">
+    <h4>受け取れるもの</h4>
+    <div class="axis-list">
+      <div class="axis-row"><span class="axis-tag" style="background:rgba(242,167,184,.18);color:#F2A7B8">結果</span><span>緊張しやすさと関わりたい気持ち、6つの要素から導く、あなたの人見知りタイプ</span></div>
+      <div class="axis-row"><span class="axis-tag" style="background:rgba(242,167,184,.18);color:#F2A7B8">行動</span><span>関わりを広げる具体的な手順3つ（いちばん少ない1か所だけ）</span></div>
+      <div class="axis-row"><span class="axis-tag" style="background:rgba(242,167,184,.18);color:#F2A7B8">場面</span><span>初対面／職場や学校／恋愛や気になる人の前 の3場面での見え方</span></div>
+      <div class="axis-row"><span class="axis-tag" style="background:rgba(242,167,184,.18);color:#F2A7B8">内心</span><span>あなたのことを、周りがたぶん思っていること</span></div>
+    </div>
+  </div>
+
+  <div class="axis-box">
+    <h4>その結果、こうなります</h4>
+    <div class="axis-list">
+      <div class="axis-row"><span class="axis-tag" style="background:rgba(255,217,160,.18);color:#FFD9A0">→</span><span>「人見知り」と「人と関わりたくない」が同じではないと分かります</span></div>
+      <div class="axis-row"><span class="axis-tag" style="background:rgba(255,217,160,.18);color:#FFD9A0">→</span><span>緊張を無理に消そうとせず、関わりを増やす方向がわかります</span></div>
+      <div class="axis-row"><span class="axis-tag" style="background:rgba(255,217,160,.18);color:#FFD9A0">→</span><span>周りの「社交的だね」「人見知りだね」という見方の理由に気づけます</span></div>
+    </div>
+  </div>
+
+  <div class="intro-body">
+    <p>初対面、職場、学校、気になる人の前。いちばん緊張しやすい場面を思い浮かべて、<strong style="color:#c8d4e6">ふだんの自分として</strong>答えてください。「こうあるべき」ではなく、実際にやっていることで選ぶのがコツです。</p>
+    <p>年齢や性別に関係なく答えられます。パートナーや恋愛の経験がない方も、想像で答えて構いません。</p>
+    <p>選ぶと自動で次の設問に進みます。「← 前の質問」で戻れます。</p>
+  </div>
+
+  <button class="btn-start" onclick="startQuiz()">診断をはじめる</button>
+</section>
+
+<!-- QUIZ -->
+<section id="quizPage" style="display:none">
+  <div class="quiz-wrap">
+    <div class="prog-wrap">
+      <div class="prog-top">
+        <span class="axis-pill" id="axisPill"></span>
+        <span class="q-cnt" id="qCnt"></span>
+      </div>
+      <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+      <div class="basis-note" id="basisNote"></div>
+    </div>
+    <div class="q-card"><div class="q-text" id="qText"></div></div>
+    <div class="opts" id="opts"></div>
+    <div class="nav-row"><button class="btn-prev" id="btnPrev" onclick="prevQ()">← 前の質問</button></div>
+  </div>
+</section>
+
+<!-- LOADING -->
+<section id="loadingPage" style="display:none">
+  <div class="loading">
+    <div class="spinner"></div>
+    <p>緊張しやすさと関わりたい気持ちを、2軸と6要素から読み取っています…</p>
+  </div>
+</section>
+
+<!-- RESULT -->
+<section id="resultPage" style="display:none">
+  <div class="result-wrap" id="resultBody"></div>
+</section>
+
+</div>
+<script>
+// ══ 設問 ══ rev:true = 逆転項目
+// ax: N=緊張しやすさ（シャイネス） S=人と関わりたい気持ち（社交性）   sub: 下位要素（この診断での内訳）
+const QS=[
+ {id:1, ax:'N', sub:'K', basis:'シャイネス（生理的反応）', rev:false, q:'初対面の人と話すとき、声が小さくなったり早口になったりすることが多い'},
+ {id:2, ax:'S', sub:'Y', basis:'社交性（接近行動）', rev:false, q:'自分から友人や同僚に「ご飯行かない？」などと声をかけることが多い'},
+ {id:3, ax:'N', sub:'K', basis:'シャイネス（生理的反応）', rev:false, q:'大勢の前で話す場面になると、手や声が震えることが多い'},
+ {id:4, ax:'S', sub:'Y', basis:'社交性（接近行動）', rev:false, q:'連絡先を交換した人に、自分から次の約束を持ちかけることが多い'},
+ {id:5, ax:'N', sub:'T', basis:'シャイネス（認知的干渉）', rev:false, q:'初対面の人と話すとき、何を話せばいいか考えすぎて、会話の間が空くことが多い'},
+ {id:6, ax:'S', sub:'D', basis:'社交性（新奇場面への接近）', rev:false, q:'知らない人が多い集まりにも、自分から参加を決めることが多い'},
+ {id:7, ax:'N', sub:'T', basis:'シャイネス（認知的干渉）', rev:false, q:'複数人で話しているとき、話すタイミングを逃して発言しないまま終わることが多い'},
+ {id:8, ax:'S', sub:'D', basis:'社交性（新奇場面への接近）', rev:false, q:'初対面の人が多い場では、自分から話しかけに行くことが多い'},
+ {id:9, ax:'N', sub:'M', basis:'シャイネス（行動の抑制）', rev:false, q:'注目される場面になると、視線をどこに向ければいいか分からなくなることが多い'},
+ {id:10,ax:'S', sub:'H', basis:'社交性（対人接触への選好）', rev:false, q:'予定のない休日ができたとき、誰かを誘って過ごすことが多い'},
+ {id:11,ax:'N', sub:'T', basis:'シャイネス（認知的干渉・逆転）', rev:true, q:'初対面の人とでも、思ったことをそのタイミングで言葉にできることが多い'},
+ {id:12,ax:'S', sub:'Y', basis:'社交性（接近行動・逆転）', rev:true, q:'誘いは基本的に相手から来るのを待つことが多い'},
+ {id:13,ax:'N', sub:'K', basis:'シャイネス（生理的反応・逆転）', rev:true, q:'人前で話すときも、いつもと変わらない声の大きさ・速さで話せることが多い'},
+ {id:14,ax:'S', sub:'D', basis:'社交性（新奇場面への接近）', rev:false, q:'新しいコミュニティやイベントの情報を見て、実際に申し込むことが多い'},
+ {id:15,ax:'N', sub:'T', basis:'シャイネス（認知的干渉）', rev:false, q:'誰かに見られながら作業すると、いつもより手が止まることが多い'},
+ {id:16,ax:'S', sub:'D', basis:'社交性（新奇場面への接近・逆転）', rev:true, q:'知らない人が多いと分かっている場には、理由をつけて参加を避けることが多い'},
+ {id:17,ax:'N', sub:'M', basis:'シャイネス（行動の抑制）', rev:false, q:'人前に立つと、手や足の置き場に困ることが多い'},
+ {id:18,ax:'S', sub:'H', basis:'社交性（対人接触への選好）', rev:false, q:'一人で食事するより、誰かと食事する機会を優先することが多い'},
+ {id:19,ax:'N', sub:'M', basis:'シャイネス（行動の抑制・逆転）', rev:true, q:'人に見られている場面でも、ふだんと同じように自然に動けることが多い'},
+ {id:20,ax:'S', sub:'H', basis:'社交性（対人接触への選好・逆転）', rev:true, q:'予定のない時間ができると、誰にも連絡せず一人で過ごすことが多い'}
+];
+
+const OPTS=['まったく当てはまらない','あまり当てはまらない','どちらとも言えない','やや当てはまる','とても当てはまる'];
+
+const AX={
+  N:{name:'緊張しやすさ', color:'#8FB8E8', bg:'rgba(143,184,232,.18)'},
+  S:{name:'人と関わりたい気持ち', color:'#F2A7B8', bg:'rgba(242,167,184,.18)'}
+};
+
+const SUB={
+  K:{ax:'N', name:'身体反応', desc:'緊張が身体に出やすいか。声や手が震える、声の大きさや速さが変わる、など。'},
+  T:{ax:'N', name:'言葉につまる', desc:'会話の中で言葉が出にくくなるか。間が空く、発言のタイミングを逃す、考えすぎて止まる、など。'},
+  M:{ax:'N', name:'動きのぎこちなさ', desc:'注目される場面で、動作がぎこちなくなるか。視線や手足の置き場に困る、など。'},
+  Y:{ax:'S', name:'自分から誘う', desc:'自分から交流を持ちかけられるか。声をかける、約束を持ちかける、など。'},
+  D:{ax:'S', name:'新しい場に出る', desc:'知らない人がいる場に、自分から出ていけるか。参加を決める、話しかけに行く、など。'},
+  H:{ax:'S', name:'人と過ごす選択', desc:'一人の時間よりも、人と過ごすことを選ぶか。誘う、優先する、など。'}
+};
+
+const TYPES={
+ HH:{name:'緊張してもちゃんと近づく、がんばり屋系', color:'#F5C98A',
+  one:'緊張しやすさも、人と関わりたい気持ちも、どちらも高く出ています。初対面や人前は苦手なはずなのに、それでも関わりのほうへ踏み出している状態です。',
+  guess:'「あの人、人と話すの好きだよね」「え、実は結構緊張してるんだ……？」',
+  guessWhy:'シャイネス（緊張しやすさ）と社交性（人と関わりたい気持ち）は、別々の性質だと言われています（Cheek & Buss, 1981）。あなたは緊張しながらも関わりを選んでいて、周りからは単純に「社交的な人」として見えています。その裏にある緊張は、あまり伝わっていません。',
+  scene:['人前での発表や自己紹介の前は、毎回それなりに緊張する','それでも誘いがあれば、基本的には行くほうを選ぶ','慣れた相手の前では、緊張していたことを忘れるくらい自然になる']},
+ HM:{name:'様子を見てから動く、慎重系', color:'#C8C0B0',
+  one:'緊張しやすさは高めで、人と関わりたい気持ちは中くらいです。飛び込む前に、まず様子を見る。安全を確かめてから動く、という順番を大事にしています。',
+  guess:'「最初は静かだったけど、慣れたら普通に話すね」',
+  guessWhy:'緊張が高いと、未知の場面は負荷が大きく感じられます。それでも関わりたい気持ちはゼロではないため、様子を見て安全を確認してから近づく、という段取りが自然に生まれます。',
+  scene:['初めての場では、しばらく様子を見てから輪に入ることが多い','一度慣れた相手には、最初の緊張がうそのように話せる','新しい誘いには、少し考える時間が欲しいと感じる']},
+ HL:{name:'一人の時間を大切にする、本当の人見知り系', color:'#7F9FC8',
+  one:'緊張しやすさが高く、人と関わりたい気持ちは控えめです。初対面や人前が負荷として感じられやすく、そのぶん一人の時間に自然と心が向きます。',
+  guess:'「人と話すの、あまり得意じゃなさそうだな」',
+  guessWhy:'緊張しやすさが高く、関わりたい気持ちが控えめなため、周りから見ても「人見知り」の印象がそのまま伝わりやすい位置です。無理に合わせる必要はなく、負荷の少ない関わり方を選べば十分です。',
+  scene:['大人数の場より、一人や少人数の時間のほうが落ち着く','初対面の場面は、終わった後にどっと疲れを感じる','誘いを断ることに、以前より罪悪感を感じなくなってきた']},
+ MH:{name:'それでも踏み出す、勇気系', color:'#B8E0C8',
+  one:'緊張しやすさは中くらい、人と関わりたい気持ちは高めです。多少の緊張はあっても、関わりたい気持ちのほうが先に動きます。',
+  guess:'「フットワーク軽いね」',
+  guessWhy:'緊張が強すぎないぶん、関わりたい気持ちがブレーキなしで行動に出ています。多少の気まずさがあっても、それを理由に動きを止めないタイプです。',
+  scene:['新しい集まりにも、気になれば参加してみることが多い','初対面でも、数分話せば緊張はおさまってくる','誘いを受けるかどうかで、長く迷うことは少ない']},
+ MM:{name:'そのときどきで変わる、標準系', color:'#D8C8A8',
+  one:'緊張しやすさも、関わりたい気持ちも、どちらも中くらいです。相手や場面によって振れ幅があり、「いつも人見知り」でも「いつも社交的」でもない、状況次第の位置です。',
+  guess:'「その日の気分で、ちょっと違うよね」',
+  guessWhy:'どちらの軸も極端に出ていないため、周りから見ても一貫した印象を持たれにくい位置です。本人も「今日は話せた」「今日はダメだった」の差を感じやすくなります。',
+  scene:['場や相手によって、話せる日とそうでない日がある','仲のいい場では問題なく話せるが、新しい場では波がある','「人見知りなの？」と聞かれると、答えに迷う']},
+ ML:{name:'静かに整える、省エネ系', color:'#A898C0',
+  one:'緊張しやすさは中くらい、関わりたい気持ちは控えめです。無理に動かなくても困らない場面では、エネルギーを使わない選択をすることが多い位置です。',
+  guess:'「一人でも平気そうだよね」',
+  guessWhy:'緊張は強すぎないため、人と関わること自体が苦手というより、関わる優先度が高くない状態です。必要な場面では動けますが、普段は省エネに過ごすことを選びます。',
+  scene:['誘いがなければ、特に寂しさも感じず一人で過ごす','必要な場面（仕事など）では、問題なく人と話せる','プライベートの予定は、自分から埋めようとしない']},
+ LH:{name:'物怖じしない、社交系', color:'#8FB8E8',
+  one:'緊張しやすさは低く、関わりたい気持ちは高めです。初対面や人前にほとんど負荷を感じず、関わりたい気持ちがそのまま行動に出ている位置です。',
+  guess:'「全然人見知りしないね」',
+  guessWhy:'緊張のブレーキがかかりにくく、関わりたい気持ちがアクセルとして働いています。周りからは「人見知りとは真逆」に見られることが多い位置です。',
+  scene:['初対面の人にも、ほぼためらわず話しかけられる','新しい場に行くことに、ワクワクのほうが先に来る','人前で話す場面も、あまり負担に感じない']},
+ LM:{name:'落ち着いて選んで関わる、マイペース系', color:'#F2A7B8',
+  one:'緊張しやすさは低く、関わりたい気持ちは中くらいです。緊張しないからこそ、関わるかどうかを気分や都合で自由に選べる位置です。',
+  guess:'「気が向いたら誘ってくれるタイプ」',
+  guessWhy:'緊張による制約がないため、関わる・関わらないの判断が純粋に「やりたいかどうか」で決まります。社交的に見える日と、そうでない日の差は、気分の違いによるものです。',
+  scene:['気が向いたときは、自分から誘うこともある','気が向かないときは、断ることに抵抗がない','初対面でも緊張はしないが、積極的に話すとは限らない']},
+ LL:{name:'堂々と一人を選ぶ、独立系', color:'#B4A07B',
+  one:'緊張しやすさも、関わりたい気持ちも、どちらも低めです。これは人見知りとは違います。緊張しているわけではなく、一人の時間を積極的に選んでいる位置です。',
+  guess:'「一人が好きなんだろうな」',
+  guessWhy:'緊張が低いのに関わりを避けているように見えると、人見知りと誤解されがちです。ですが実際は緊張によるものではなく、好みとして一人を選んでいます。緊張のなさは、初対面でもはっきり伝わります。',
+  scene:['初対面でも緊張せず話せるが、それ自体を好んでいるわけではない','一人の時間を、誰かに説明せず当然のものとして過ごしている','「誘ってもいい？」と聞かれたら、素直に断ることが多い']}
+};
+
+const STRENGTH={
+ Y:'あなたの土台は<strong>自分から誘う</strong>力です。声をかける、約束を持ちかける。この力がある人は、関係を自分から動かせます。',
+ D:'あなたの土台は<strong>新しい場に出る</strong>力です。知らない人が多い場でも、参加を決め、話しかけに行ける。関わりの範囲を自分で広げられます。',
+ H:'あなたの土台は<strong>人と過ごす選択</strong>です。一人の時間より人と過ごすことを、自然に選べています。これが関わりの土台になっています。'
+};
+
+const RX={
+ Y:{label:'自分から誘う', steps:[
+   ['「また」を言葉にする','「また行こうね」で終わらせず、「来週あたり、どう？」まで言ってみる。誘いは、思っているより歓迎されます。'],
+   ['誘う理由を先に用意しておく','「新しいお店見つけたから」「久しぶりに話したいから」。理由があると、誘う側の気持ちが軽くなります。'],
+   ['断られても、理由にしない','一度断られても、その人があなたを嫌っているわけではないことが多いです。次の機会に、またさらっと誘ってみてください。']]},
+ D:{label:'新しい場に出る', steps:[
+   ['一回だけ行く、と決めて参加する','「気に入らなければ次は行かない」を最初に決めておくと、参加のハードルが下がります。'],
+   ['知っている人を一人だけ連れて行く','完全に一人で飛び込まなくても大丈夫です。顔見知りが一人いるだけで、負荷はかなり減ります。'],
+   ['最初の一言だけ、用意しておく','「初めてで緊張してます」のひと言でも十分です。話し出しの一言があるだけで、場に出やすくなります。']]},
+ H:{label:'人と過ごす選択', steps:[
+   ['予定のない週末を、埋める前に一人分だけ空けておく','全部を人と過ごす必要はありません。まず一回、「今週は誰かと過ごす」と決めてみてください。'],
+   ['「一緒にどう？」を先に言ってみる','相手から誘われるのを待つ代わりに、自分から軽く聞いてみる。多くの場合、思っているより簡単に返事が来ます。'],
+   ['一人の予定の隣に、人の予定を一つ置く','一人の時間を削らなくていいです。その横に、人と過ごす時間を一つだけ追加してみてください。']]}
+};
+
+const EASE={
+ K:{label:'身体反応', note:'声や手が震える、声の大きさが変わる。これは「緊張している証拠」であって、「うまくできていない証拠」ではありません。話す前に一度、肩を下げてゆっくり息を吐くだけで、身体の反応は少し落ち着きます。'},
+ T:{label:'言葉につまる', note:'考えすぎて言葉が止まるのは、慎重に話そうとしているからです。完璧な一文を探す代わりに、「えっと」「そうですね」のつなぎの言葉を先に出す癖をつけると、間が怖くなくなります。'},
+ M:{label:'動きのぎこちなさ', note:'視線や手足の置き場に困るのは、注目を強く感じているからです。手元に何か持つ（飲み物やメモ）だけでも、置き場に困る時間が減り、落ち着いて見えやすくなります。'}
+};
+
+const SCENES=[
+ {name:'初対面の場', map:{
+   HH:'緊張は内側にありますが、関わろうとする姿勢が先に伝わります。「社交的な人」として見られやすい場面です。',
+   HM:'最初は静かに見えても、少し経つと自然に話し出します。「最初だけ緊張してた」と、後から気づかれやすい位置です。',
+   HL:'初対面は負荷が大きく、無理に話そうとしなくて大丈夫です。少人数から始めると、負担がかなり減ります。',
+   MH:'多少の緊張はあっても、関わろうとする姿勢がすぐに伝わります。話しかけやすい人として見られやすい場面です。',
+   MM:'特に困ることはなく、自然に対応できる場面です。相手や雰囲気によって、少し手応えが変わります。',
+   ML:'緊張はさほどありませんが、自分から話そうとはしないため、「静かな人」という印象で終わりやすい位置です。',
+   LH:'緊張なく、積極的に関わっていける場面です。初対面でも、気づくとあなたのほうが話を進めていることが多いです。',
+   LM:'緊張はしないものの、積極的に話すかどうかはその時の気分次第です。「話せばいい人」という印象が残ります。',
+   LL:'緊張せず対応できますが、自分から深く関わろうとはしません。「落ち着いているけど、距離はある人」として見られやすい場面です。'}},
+ {name:'職場や学校', map:{
+   HH:'緊張を抱えながらも、関わりを増やそうとしているのが伝わる位置です。無理をしすぎないよう、ペース配分を忘れないでください。',
+   HM:'慣れた相手とは問題なくやれていますが、新しい環境には時間がかかります。焦らず慣れていくペースで十分です。',
+   HL:'一人で集中する時間のほうが、力を発揮しやすい位置です。必要な関わりだけに絞っても、評価が下がるわけではありません。',
+   MH:'新しい環境にも早めに慣れ、関わりを広げていける位置です。周りからも、話しかけやすい人として見られています。',
+   MM:'特に困らず、ふつうに過ごせている位置です。得意な場面と苦手な場面が、はっきり分かれています。',
+   ML:'一人で進める仕事のほうが、ストレスが少ない位置です。必要な連携だけ押さえておけば十分です。',
+   LH:'新しい環境にもすぐ慣れ、周りを巻き込んで動ける位置です。頼られることも多くなりやすいです。',
+   LM:'緊張せず対応できますが、関わる量は気分次第です。必要なときだけ関わる、というスタイルが自然に成立しています。',
+   LL:'一人で進めることに、まったく抵抗がない位置です。周りからは「落ち着いている人」として見られています。'}},
+ {name:'恋愛や気になる人の前', map:{
+   HH:'緊張しながらも、気になる人には近づこうとします。緊張がぎこちなさとして伝わることもありますが、関わろうとする気持ちは伝わっています。',
+   HM:'最初は緊張しますが、関係が深まるほど自然になっていきます。時間をかけることを、恐れなくて大丈夫です。',
+   HL:'気になる人の前ほど、緊張が強く出やすい位置です。短いやりとりを重ねることから始めると、負担が減ります。',
+   MH:'多少の緊張はあっても、気になる人には自分から近づいていける位置です。',
+   MM:'特別緊張するわけでも、特別積極的になるわけでもない位置です。相手やタイミングによって変わります。',
+   ML:'緊張は少ないものの、自分から動くかどうかは気分次第です。一歩が、関係の分かれ道になりやすい位置です。',
+   LH:'緊張せず、気になる人にも自然に近づける位置です。好意を言葉や態度で見せると、より伝わりやすくなります。',
+   LM:'緊張はしませんが、積極的に動くかは状況次第です。「脈があるかどうか」が、相手に伝わりにくいことがあります。',
+   LL:'緊張はまったくありませんが、自分から動く優先度は高くない位置です。気になる相手には、一歩だけ多めに動いてみてください。'}}
+];
+
+// ══ state ══
+let cur=0, ans={};
+function show(id){document.getElementById(id).style.display='block';}
+function hide(id){document.getElementById(id).style.display='none';}
+function startQuiz(){ cur=0; ans={}; hide('topPage'); show('quizPage'); renderQ(); window.scrollTo(0,0); }
+
+function renderQ(){
+  const q=QS[cur], a=AX[q.ax];
+  const pill=document.getElementById('axisPill');
+  pill.textContent=a.name+' / '+SUB[q.sub].name; pill.style.background=a.bg; pill.style.color=a.color;
+  document.getElementById('qCnt').textContent=(cur+1)+' / '+QS.length;
+  document.getElementById('progFill').style.width=Math.round((cur/QS.length)*100)+'%';
+  document.getElementById('basisNote').textContent='参照した概念: '+q.basis;
+  document.getElementById('qText').textContent=q.q;
+  const box=document.getElementById('opts'); box.innerHTML='';
+  OPTS.forEach(function(o,i){
+    const b=document.createElement('button');
+    b.className='opt-btn'+(ans[q.id]===i+1?' selected':'');
+    b.textContent=(i+1)+'. '+o;
+    b.onclick=function(){ selectAns(i+1); };
+    box.appendChild(b);
+  });
+  document.getElementById('btnPrev').style.visibility = cur>0 ? 'visible' : 'hidden';
+}
+function selectAns(v){
+  const q=QS[cur]; ans[q.id]=v; renderQ();
+  if(cur===QS.length-1){
+    setTimeout(function(){ hide('quizPage'); show('loadingPage'); setTimeout(showResult,1600); },380);
+  } else {
+    setTimeout(function(){ cur++; renderQ(); window.scrollTo(0,0); },300);
+  }
+}
+function prevQ(){ if(cur>0){ cur--; renderQ(); window.scrollTo(0,0); } }
+
+// ══ 採点 ══
+function calcScores(a){
+  const raw={};
+  QS.forEach(function(q){ const v=a[q.id]||3; raw[q.id]= q.rev ? (6-v) : v; });
+  const aS={N:0,S:0}, aN={N:0,S:0}, sS={}, sN={};
+  Object.keys(SUB).forEach(function(k){ sS[k]=0; sN[k]=0; });
+  QS.forEach(function(q){ aS[q.ax]+=raw[q.id]; aN[q.ax]++; sS[q.sub]+=raw[q.id]; sN[q.sub]++; });
+  const pct={}, sub={};
+  ['N','S'].forEach(function(k){ pct[k]=Math.round(((aS[k]-aN[k])/(aN[k]*4))*100); });
+  Object.keys(SUB).forEach(function(k){ sub[k]=Math.round(((sS[k]-sN[k])/(sN[k]*4))*100); });
+  return {pct:pct, sub:sub};
+}
+
+function band(v){ return v>=65 ? 'H' : (v>=40 ? 'M' : 'L'); }
+function getKey(pct){ return band(pct.N)+band(pct.S); }
+
+const SUB_ORDER=['K','T','M','Y','D','H'];
+const N_SUBS=['K','T','M'], S_SUBS=['Y','D','H'];
+function highestOf(sub, keys){ let k=keys[0]; keys.forEach(function(x){ if(sub[x] > sub[k]) k=x; }); return k; }
+function lowestOf(sub, keys){ let k=keys[0]; keys.forEach(function(x){ if(sub[x] < sub[k]) k=x; }); return k; }
+
+// ══ 信頼性 ══
+function calcReliability(a){
+  const vals=QS.map(function(q){ return a[q.id]||3; });
+  const same=vals.filter(function(v){ return v===vals[0]; }).length;
+  const mid=vals.filter(function(v){ return v===3; }).length;
+  const norm=QS.filter(function(q){return !q.rev;}).map(function(q){return a[q.id]||3;});
+  const revs=QS.filter(function(q){return q.rev;}).map(function(q){return a[q.id]||3;});
+  const avgN=norm.reduce(function(s,v){return s+v;},0)/norm.length;
+  const avgR=revs.reduce(function(s,v){return s+v;},0)/revs.length;
+  const contradicted = (avgN>=4.2 && avgR>=4.2) || (avgN<=1.8 && avgR<=1.8);
+  const allSameNonMid = same>=QS.length-2 && vals[0]!==3;
+  if(allSameNonMid || contradicted){
+    return {label:'要確認', color:'#E87A9A', note:'通常の設問と逆転の設問で、答えの向きが揃いすぎています。読み飛ばしがあったかもしれません。もう一度ゆっくり答えると、結果の精度が上がります。'};
+  }
+  if(mid>=12){ return {label:'参考程度', color:'#8B9BB4', note:'「どちらとも言えない」が多いため、軸の差が出にくくなっています。迷ったときは、直近3ヶ月の実際の場面を思い出して選ぶと輪郭が出ます。'}; }
+  if(mid>=7){ return {label:'中程度', color:'#4AA8E8', note:'いくつか判断に迷った項目がありますが、全体の傾向は読み取れます。'}; }
+  return {label:'高い', color:'#6FB7E8', note:'回答に一貫性があり、信頼できる結果です。'};
+}
+
+// ══ 結果描画 ══
+function showResult(){
+  hide('loadingPage'); show('resultPage');
+  const sc=calcScores(ans);
+  const key=getKey(sc.pct);
+  const t=TYPES[key];
+  const nHigh=highestOf(sc.sub,N_SUBS), nLow=lowestOf(sc.sub,N_SUBS);
+  const sHigh=highestOf(sc.sub,S_SUBS), sLow=lowestOf(sc.sub,S_SUBS);
+  const flatN = (sc.sub[nHigh]-sc.sub[nLow]) < 10;
+  const flatS = (sc.sub[sHigh]-sc.sub[sLow]) < 10;
+  const rel=calcReliability(ans);
+  const n=sc.pct.N, s=sc.pct.S;
+
+  let h='';
+  h+='<div class="result-header">'
+   + '<div class="result-label">診断結果 &nbsp;|&nbsp; '+key+'-'+sLow+'</div>'
+   + '<div class="result-type" style="color:'+t.color+'">'+t.name+'</div>'
+   + '<div class="result-one">'+t.one+'</div>'
+   + '</div>';
+
+  h+='<div class="sec" style="border-color:rgba(242,167,184,.28)">'
+   + '<div class="sec-label">あなたのことを、周りはたぶんこう思っています</div>'
+   + '<div class="quote">'+t.guess+'</div>'
+   + '<div class="sec-body" style="margin-top:.9rem">'+t.guessWhy+'</div>'
+   + '<div class="micro">※ あなたのスコアから逆算した「そう感じられやすい」という目安です。実際に言われた言葉ではありません。</div>'
+   + '</div>';
+
+  h+='<div class="sec"><div class="sec-label">3つの場面での見え方</div><div class="step">';
+  SCENES.forEach(function(sc2){
+    h+='<div class="step-row"><div class="step-num" style="background:rgba(143,184,232,.15);color:#8FB8E8">◇</div>'
+     + '<div class="step-txt"><b>'+sc2.name+'</b>'+sc2.map[key]+'</div></div>';
+  });
+  h+='</div></div>';
+
+  h+='<div class="map-wrap">'
+   + '<div class="map-axis-y">↑ 緊張しやすさ</div>'
+   + '<div class="map">'
+   + '<div class="map-line" style="left:40%;top:0;width:1px;height:100%"></div>'
+   + '<div class="map-line" style="left:65%;top:0;width:1px;height:100%"></div>'
+   + '<div class="map-line" style="left:0;bottom:40%;width:100%;height:1px"></div>'
+   + '<div class="map-line" style="left:0;bottom:65%;width:100%;height:1px"></div>'
+   + '<div class="map-q" style="left:0;width:40%;top:0;height:35%">本当の人見知り系</div>'
+   + '<div class="map-q" style="left:40%;width:25%;top:0;height:35%">慎重系</div>'
+   + '<div class="map-q" style="left:65%;width:35%;top:0;height:35%">がんばり屋系</div>'
+   + '<div class="map-q" style="left:40%;width:25%;top:35%;height:30%">標準系</div>'
+   + '<div class="map-q" style="left:65%;width:35%;top:35%;height:30%">勇気系</div>'
+   + '<div class="map-q" style="left:0;width:40%;bottom:0;height:40%">独立系</div>'
+   + '<div class="map-q" style="left:65%;width:35%;bottom:0;height:40%">社交系</div>'
+   + '<div class="map-dot" style="left:'+(5+s*0.9).toFixed(1)+'%;bottom:'+(5+n*0.9).toFixed(1)+'%"></div>'
+   + '</div>'
+   + '<div class="map-axis-x">人と関わりたい気持ち →</div>'
+   + '<div class="micro" style="text-align:center">線は「低・中・高」の境目（40点と65点）。●が、いまのあなたの位置です。</div>'
+   + '</div>';
+
+  h+='<div class="score-grid">'
+   + '<div class="score-card"><div class="score-name">緊張しやすさ</div>'
+   + '<div class="score-val" style="color:#8FB8E8">'+n+'<span class="score-unit">/100</span></div>'
+   + '<div class="score-bar"><div class="score-fill" style="background:#8FB8E8;width:'+n+'%"></div></div>'
+   + '<div class="score-note">'+(n>=65?'初対面や人前で、緊張がはっきり出やすい状態です。':n>=40?'場面によって、緊張の出方にムラがあります。':'人前でも、緊張はあまり大きく出ていません。')+'</div></div>'
+   + '<div class="score-card"><div class="score-name">関わりたい気持ち</div>'
+   + '<div class="score-val" style="color:#F2A7B8">'+s+'<span class="score-unit">/100</span></div>'
+   + '<div class="score-bar"><div class="score-fill" style="background:#F2A7B8;width:'+s+'%"></div></div>'
+   + '<div class="score-note">'+(s>=65?'人と関わりたい気持ちが、はっきり行動に出ています。':s>=40?'関わりたい気持ちはありますが、場面や気分によってムラがあります。':'一人の時間を優先することが多いようです。')+'</div></div>'
+   + '</div>';
+
+  (function(){
+    function nb(v){
+      if(Math.abs(v-65)<=5) return v>=65?'M':'H';
+      if(Math.abs(v-40)<=5) return v>=40?'L':'M';
+      return null;
+    }
+    const alt=[];
+    const bn=band(n), bs=band(s), nn=nb(n), ns=nb(s);
+    if(nn) alt.push({ax:'緊張しやすさ', v:n, key:nn+bs});
+    if(ns) alt.push({ax:'関わりたい気持ち', v:s, key:bn+ns});
+    if(alt.length){
+      h+='<div class="rel-box" style="border-color:rgba(255,217,160,.35)"><div class="rel-top"><span class="rel-label">境目に近い結果です</span></div><div class="rel-note">';
+      alt.forEach(function(x){
+        h+='<strong style="color:#c8d4e6">'+x.ax+'（'+x.v+'点）</strong>が、タイプの境目のすぐ近くにあります。答え方が少し違えば「<strong style="color:#c8d4e6">'+TYPES[x.key].name+'</strong>」になっていた可能性があります。<br>';
+      });
+      h+='どちらのタイプの説明にも、思い当たるところがあるかもしれません。少し時間をおいてもう一度受けると、傾向がはっきりします。</div></div>';
+    }
+  })();
+
+  h+='<div class="sec"><div class="sec-label">6つの内訳 — 緊張と関わりたい気持ちの出方</div><div class="sub-list">';
+  SUB_ORDER.forEach(function(k){
+    const s2=SUB[k], v=sc.sub[k], col=AX[s2.ax].color;
+    let mark='';
+    if(s2.ax==='N' && !flatN && k===nHigh) mark='<span class="sub-flag low">いちばん出ている</span>';
+    if(s2.ax==='S' && !flatS && k===sHigh) mark='<span class="sub-flag high">いちばん出ている</span>';
+    if(s2.ax==='S' && !flatS && k===sLow) mark='<span class="sub-flag low">いちばん眠っている</span>';
+    h+='<div class="sub-row">'
+     + '<div class="sub-head"><span class="sub-name"><span class="sub-ax" style="color:'+col+'">'+AX[s2.ax].name+'</span>'+s2.name+'</span>'
+     + '<span class="sub-val" style="color:'+col+'">'+v+'</span></div>'
+     + '<div class="sub-bar"><div class="sub-fill" style="background:'+col+';width:'+v+'%"></div></div>'
+     + '<div class="sub-desc">'+s2.desc+mark+'</div>'
+     + '</div>';
+  });
+  h+='</div><div class="micro">※ この6つの内訳は、20問を意味のまとまりで分けた<strong>この診断独自の区分</strong>です。心理学で確立された下位尺度ではありません。2軸（緊張しやすさ・関わりたい気持ち）のほうが、研究の裏づけがある部分です。</div></div>';
+
+  h+='<div class="rel-box"><div class="rel-top">'
+   + '<span class="rel-label">回答の信頼性</span>'
+   + '<span class="rel-badge" style="background:'+rel.color+'22;color:'+rel.color+'">'+rel.label+'</span>'
+   + '</div><div class="rel-note">'+rel.note+'</div></div>';
+
+  h+='<div class="sec"><div class="sec-label">こんな場面、心当たりはありませんか</div><div class="scene">';
+  t.scene.forEach(function(s3){ h+='<div class="scene-row"><span class="scene-mark">●</span><span>'+s3+'</span></div>'; });
+  h+='</div></div>';
+
+  const ez=EASE[nHigh];
+  h+='<div class="sec"><div class="sec-label">緊張との付き合い方</div><div class="sec-body">'
+   + (flatN ? '3つの反応の差は小さく、場面によって出方が変わるようです。その中でいちばん出やすいのは<strong>'+ez.label+'</strong>でした。'+ez.note : 'いちばん出やすいのは<strong>'+ez.label+'</strong>でした。'+ez.note)
+   + '</div></div>';
+
+  h+='<div class="sec"><div class="sec-label">いま効いているもの</div><div class="sec-body">'
+   + (flatS ? '3つの要素が、ほぼ同じ高さにそろっています（いちばん高い要素と低い要素の差が10点未満）。突出も欠けもない状態です。' : STRENGTH[sHigh])
+   + '</div></div>';
+
+  const rx=RX[sLow];
+  h+='<div class="sec" style="border-color:rgba(242,167,184,.28)"><div class="sec-label">'+(flatS?'次の一歩 — 目立った弱点はありません':'次の一歩 — 広げる場所は「'+rx.label+'」ひとつです')+'</div>'
+   + '<div class="sec-body" style="margin-bottom:1.1rem">'+(flatS?'3つの差が小さく、はっきりした弱点はありませんでした。あえて一つ選ぶなら、いちばん点が低かった<strong>'+rx.label+'</strong>（'+sc.sub[sLow]+'点）から動かしてみてください。':'3つのうち、いちばん眠っているのが<strong>'+rx.label+'</strong>（'+sc.sub[sLow]+'点）でした。')+'緊張を消す必要はありません。ここを少しだけ動かすと、関わりの量が増えていきます。</div>'
+   + '<div class="step">';
+  rx.steps.forEach(function(s4,i){ h+='<div class="step-row"><div class="step-num" style="background:rgba(143,184,232,.15);color:#8FB8E8">'+(i+1)+'</div><div class="step-txt"><b>'+s4[0]+'</b>'+s4[1]+'</div></div>'; });
+  h+='</div></div>';
+
+  h+='<div class="src"><div class="sec-label">この診断の土台</div>'
+   + '<p><strong style="color:#c8d4e6">分野：社会心理学・パーソナリティ心理学</strong><br>'
+   + 'この診断は<strong style="color:#c8d4e6">シャイネス（緊張しやすさ）</strong>と<strong style="color:#c8d4e6">社交性（人と関わりたい気持ち）</strong>という2つの軸を参照しています。Cheek と Buss は、この2つが別々の性質であり、緊張しやすいことと、人と関わりたい気持ちが低いことは、必ずしも同じではないと報告しています（1981）。</p>'
+   + '<p style="margin-top:.9rem">つまり、緊張しやすくても関わりたい気持ちが高い人も、緊張しにくくても関わりたい気持ちが低い人もいます。「人見知り」という一つの言葉では、本来この2つが混ざってしまいます。</p>'
+   + '<p style="margin-top:.9rem">ただし、<strong style="color:#c8d4e6">9つのタイプ分けそのものは、研究で定義された分類ではありません</strong>。2軸の組み合わせに、日常の言葉を当てはめたこの診断独自の対応づけです。個々の設問も、これらの概念を参照して作成した独自項目です。</p>'
+   + '<p style="margin-top:.9rem">結果は傾向の可視化であり、臨床的な診断ではありません。緊張のなさ・多さに優劣はなく、今の自分の状態を知るための目安としてお使いください。</p></div>';
+
+  h+='<button class="btn-retry" onclick="location.reload()">← もう一度やってみる</button>';
+
+  document.getElementById('resultBody').innerHTML=h;
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
