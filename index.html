@@ -12,7 +12,7 @@
 :root{
   --bg:#05080f;--surface:#0a0f1a;--surface2:#101725;
   --border:rgba(120,180,255,0.09);--border2:rgba(120,180,255,0.18);
-  --text:#e6edf8;--muted:#5a6a85;--faint:#141c2b;
+  --text:#e6edf8;--muted:#8291ab;--faint:#141c2b;
   --warm:#E8734A;--warm2:#B94E2C;--cool:#4AA8E8;--cool2:#2C72B9;--cream:#FFD9A0;
 }
 html,body{min-height:100vh;background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;-webkit-text-size-adjust:100%}
@@ -29,18 +29,18 @@ body::before{content:'';position:fixed;inset:0;
 /* TOP */
 .top{padding:3.2rem 0 2rem}
 .top-eye{font-size:.64rem;letter-spacing:.24em;color:var(--muted);margin-bottom:1rem;text-transform:uppercase;text-align:center}
-.top h1{font-size:1.5rem;font-weight:700;line-height:1.55;color:#fff;margin-bottom:.7rem;text-align:center;letter-spacing:.02em}
-.top-sub{font-size:.66rem;letter-spacing:.16em;color:var(--muted);margin-bottom:2.2rem;text-align:center}
-.intro-body{font-size:.87rem;line-height:2.05;color:#93a3bd;margin-bottom:1.5rem}
+.top h1{font-size:1.65rem;font-weight:700;line-height:1.55;color:#fff;margin-bottom:.7rem;text-align:center;letter-spacing:.02em}
+.top-sub{font-size:.7rem;letter-spacing:.14em;color:var(--muted);margin-bottom:2.2rem;text-align:center}
+.intro-body{font-size:.96rem;line-height:2.05;color:#c3cde0;margin-bottom:1.5rem}
 .intro-body p{margin-bottom:.95rem}
 .intro-body em{color:var(--warm);font-style:normal;font-weight:500}
-.hook{border-left:2px solid var(--warm2);padding-left:1.2rem;margin:1.3rem 0;font-size:.87rem;line-height:1.95;color:#b3c0d6}
+.hook{border-left:2px solid var(--warm2);padding-left:1.2rem;margin:1.3rem 0;font-size:.96rem;line-height:1.95;color:#c7d2e3}
 .axis-box{background:var(--surface);border:.5px solid var(--border);border-radius:12px;padding:1.2rem;margin-bottom:1.4rem}
-.axis-box h4{font-size:.67rem;color:var(--muted);letter-spacing:.12em;margin-bottom:.9rem}
+.axis-box h4{font-size:.72rem;color:var(--muted);letter-spacing:.12em;margin-bottom:.9rem}
 .axis-list{display:flex;flex-direction:column;gap:.6rem}
-.axis-row{display:flex;align-items:flex-start;gap:.8rem;font-size:.8rem;line-height:1.75;color:#8494ae}
-.axis-tag{font-size:.65rem;font-weight:700;padding:2px 9px;border-radius:20px;flex-shrink:0;margin-top:2px;white-space:nowrap}
-.warn-box{background:rgba(232,115,74,.05);border:.5px solid rgba(232,115,74,.18);border-radius:10px;padding:.9rem 1.1rem;margin-bottom:1.5rem;font-size:.78rem;color:#8494ae;line-height:1.85}
+.axis-row{display:flex;align-items:flex-start;gap:.8rem;font-size:.88rem;line-height:1.75;color:#c3cde0}
+.axis-tag{font-size:.68rem;font-weight:700;padding:2px 9px;border-radius:20px;flex-shrink:0;margin-top:2px;white-space:nowrap}
+.warn-box{background:rgba(232,115,74,.05);border:.5px solid rgba(232,115,74,.18);border-radius:10px;padding:.9rem 1.1rem;margin-bottom:1.5rem;font-size:.86rem;color:#c3cde0;line-height:1.85}
 .btn-start{width:100%;padding:1.05rem;font-size:.98rem;font-weight:700;letter-spacing:.08em;border-radius:12px;border:none;background:linear-gradient(135deg,var(--warm),var(--warm2));color:#fff;cursor:pointer;transition:.25s;font-family:'Noto Sans JP',sans-serif}
 .btn-start:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(232,115,74,.3)}
 
@@ -48,15 +48,15 @@ body::before{content:'';position:fixed;inset:0;
 .quiz-wrap{padding-top:2.2rem}
 .prog-wrap{margin-bottom:1.6rem}
 .prog-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.55rem}
-.axis-pill{font-size:.66rem;font-weight:700;padding:3px 11px;border-radius:20px;letter-spacing:.06em}
-.q-cnt{font-size:.7rem;color:var(--muted)}
+.axis-pill{font-size:.7rem;font-weight:700;padding:3px 11px;border-radius:20px;letter-spacing:.06em}
+.q-cnt{font-size:.75rem;color:var(--muted)}
 .prog-bar{height:2.5px;background:var(--faint);border-radius:2px;overflow:hidden}
 .prog-fill{height:100%;background:linear-gradient(90deg,var(--warm2),var(--warm),var(--cream));border-radius:2px;transition:width .4s ease}
-.basis-note{font-size:.63rem;color:var(--muted);text-align:right;margin-top:.45rem;letter-spacing:.05em}
+.basis-note{font-size:.68rem;color:var(--muted);text-align:right;margin-top:.45rem;letter-spacing:.05em}
 .q-card{background:var(--surface);border:.5px solid var(--border);border-radius:14px;padding:1.5rem 1.4rem;margin-bottom:1.2rem}
-.q-text{font-size:.97rem;line-height:1.85;color:#fff;font-weight:500}
+.q-text{font-size:1.08rem;line-height:1.85;color:#fff;font-weight:500}
 .opts{display:flex;flex-direction:column;gap:.5rem}
-.opt-btn{width:100%;padding:.82rem 1rem;font-size:.85rem;font-family:'Noto Sans JP',sans-serif;border:.5px solid var(--border);border-radius:9px;background:var(--surface);color:#8494ae;cursor:pointer;text-align:left;transition:.18s}
+.opt-btn{width:100%;padding:.88rem 1rem;font-size:.96rem;font-family:'Noto Sans JP',sans-serif;border:.5px solid var(--border);border-radius:9px;background:var(--surface);color:#ccd6e8;cursor:pointer;text-align:left;transition:.18s}
 .opt-btn:hover{border-color:var(--border2);color:var(--text);background:var(--surface2)}
 .opt-btn.selected{border-color:var(--warm);color:#fff;background:rgba(232,115,74,.12)}
 .nav-row{display:flex;justify-content:flex-start;margin-top:1.2rem}
@@ -71,14 +71,15 @@ body::before{content:'';position:fixed;inset:0;
 /* RESULT */
 .result-wrap{padding-top:2.2rem}
 .result-header{text-align:center;padding:2rem 1.2rem 2.2rem;background:var(--surface);border:.5px solid var(--border);border-radius:16px;margin-bottom:1.2rem}
-.result-label{font-size:.63rem;letter-spacing:.24em;color:var(--muted);margin-bottom:1rem}
-.result-type{font-size:1.45rem;font-weight:700;line-height:1.5;margin-bottom:.5rem}
-.result-one{font-size:.85rem;color:#93a3bd;line-height:1.9;margin-top:.9rem}
+.result-label{font-size:.68rem;letter-spacing:.2em;color:var(--muted);margin-bottom:1rem}
+.result-type{font-size:1.6rem;font-weight:700;line-height:1.5;margin-bottom:.5rem}
+.result-one{font-size:.94rem;color:#c3cde0;line-height:1.9;margin-top:.9rem}
+.result-verdict{font-size:.92rem;color:#fff;line-height:1.9;margin-top:1.1rem;padding:.9rem 1rem;background:rgba(232,115,74,.1);border-radius:10px;border-left:2px solid var(--warm)}
 
 /* MAP */
 .map-wrap{background:var(--surface);border:.5px solid var(--border);border-radius:14px;padding:1.4rem 1.2rem 1.1rem;margin-bottom:1.2rem}
 .map{position:relative;width:100%;max-width:300px;aspect-ratio:1;margin:0 auto;border-radius:10px;background:var(--faint);overflow:hidden}
-.map-q{position:absolute;display:flex;align-items:center;justify-content:center;font-size:.58rem;color:#44536b;text-align:center;line-height:1.45;padding:3px;pointer-events:none}
+.map-q{position:absolute;display:flex;align-items:center;justify-content:center;font-size:.64rem;color:#aab8d4;text-align:center;line-height:1.45;padding:3px;pointer-events:none}
 .map-line{position:absolute;background:rgba(120,180,255,.13)}
 .map-dot{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--warm);box-shadow:0 0 0 4px rgba(232,115,74,.22);transform:translate(-50%,50%);transition:.6s cubic-bezier(.22,.68,0,1.1)}
 .map-axis-x,.map-axis-y{font-size:.62rem;color:var(--muted);text-align:center;letter-spacing:.08em}
@@ -88,50 +89,50 @@ body::before{content:'';position:fixed;inset:0;
 /* SCORES */
 .score-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.2rem}
 .score-card{background:var(--surface);border:.5px solid var(--border);border-radius:12px;padding:1.1rem}
-.score-name{font-size:.72rem;color:var(--muted);margin-bottom:.5rem;letter-spacing:.06em}
-.score-val{font-size:1.7rem;font-weight:300;line-height:1}
-.score-unit{font-size:.7rem;color:var(--muted);margin-left:.2rem}
+.score-name{font-size:.78rem;color:var(--muted);margin-bottom:.5rem;letter-spacing:.06em}
+.score-val{font-size:1.85rem;font-weight:300;line-height:1}
+.score-unit{font-size:.74rem;color:var(--muted);margin-left:.2rem}
 .score-bar{height:3px;background:var(--faint);border-radius:2px;overflow:hidden;margin-top:.7rem}
 .score-fill{height:100%;border-radius:2px;transition:width .8s ease}
 .score-note{font-size:.68rem;color:var(--muted);margin-top:.55rem;line-height:1.6}
 
 /* SECTIONS */
 .sec{background:var(--surface);border:.5px solid var(--border);border-radius:14px;padding:1.4rem;margin-bottom:1rem}
-.sec-label{font-size:.63rem;letter-spacing:.2em;color:var(--muted);margin-bottom:.9rem}
-.sec-body{font-size:.86rem;line-height:2.05;color:#93a3bd}
+.sec-label{font-size:.68rem;letter-spacing:.18em;color:var(--muted);margin-bottom:.9rem}
+.sec-body{font-size:.95rem;line-height:2.05;color:#c3cde0}
 .sec-body strong{color:var(--text);font-weight:500}
 .scene{display:flex;flex-direction:column;gap:.7rem}
-.scene-row{display:flex;gap:.75rem;align-items:flex-start;font-size:.84rem;line-height:1.8;color:#93a3bd}
+.scene-row{display:flex;gap:.75rem;align-items:flex-start;font-size:.92rem;line-height:1.8;color:#c3cde0}
 .scene-mark{color:var(--warm);flex-shrink:0;font-size:.7rem;margin-top:.45rem}
 .step{counter-reset:s;display:flex;flex-direction:column;gap:1rem}
 .step-row{display:flex;gap:.9rem;align-items:flex-start}
 .step-num{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:rgba(232,115,74,.15);color:var(--warm);font-size:.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px}
-.step-txt{font-size:.85rem;line-height:1.9;color:#93a3bd}
+.step-txt{font-size:.93rem;line-height:1.9;color:#c3cde0}
 .step-txt b{display:block;color:var(--text);font-weight:500;margin-bottom:.15rem}
 
 /* RELIABILITY */
 .rel-box{background:var(--surface);border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.2rem;margin-bottom:1rem}
 .rel-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem}
-.rel-label{font-size:.66rem;letter-spacing:.14em;color:var(--muted)}
-.rel-badge{font-size:.72rem;font-weight:700;padding:3px 12px;border-radius:20px}
-.rel-note{font-size:.72rem;line-height:1.8;color:var(--muted)}
+.rel-label{font-size:.72rem;letter-spacing:.12em;color:var(--muted)}
+.rel-badge{font-size:.76rem;font-weight:700;padding:3px 12px;border-radius:20px}
+.rel-note{font-size:.82rem;line-height:1.8;color:#b8c4da}
 
 .src{background:var(--surface);border:.5px solid var(--border);border-radius:12px;padding:1.2rem;margin-bottom:1rem}
-.src p{font-size:.75rem;color:var(--muted);line-height:1.95}
+.src p{font-size:.82rem;color:#b8c4da;line-height:1.95}
 .btn-retry{width:100%;padding:.9rem;font-size:.82rem;font-family:'Noto Sans JP',sans-serif;border:.5px solid var(--border);border-radius:10px;background:transparent;color:var(--muted);cursor:pointer;margin-top:.4rem}
 .btn-retry:hover{color:var(--text);border-color:var(--border2)}
 .quote{font-size:1.02rem;line-height:1.85;color:#fff;font-weight:500;padding:1rem 1.1rem;background:rgba(232,115,74,.08);border-radius:10px;border-left:2px solid var(--warm)}
-.micro{font-size:.68rem;line-height:1.75;color:var(--muted);margin-top:.9rem}
-.micro strong{color:#93a3bd;font-weight:500}
+.micro{font-size:.75rem;line-height:1.75;color:var(--muted);margin-top:.9rem}
+.micro strong{color:#c3cde0;font-weight:500}
 .sub-list{display:flex;flex-direction:column;gap:1.05rem}
 .sub-row{}
 .sub-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.45rem}
-.sub-name{font-size:.86rem;color:var(--text);font-weight:500}
+.sub-name{font-size:.93rem;color:var(--text);font-weight:500}
 .sub-ax{font-size:.64rem;letter-spacing:.06em;margin-right:.55rem;font-weight:700}
 .sub-val{font-size:1.05rem;font-weight:300}
 .sub-bar{height:3px;background:var(--faint);border-radius:2px;overflow:hidden}
 .sub-fill{height:100%;border-radius:2px;transition:width .8s ease}
-.sub-desc{font-size:.72rem;color:var(--muted);line-height:1.7;margin-top:.45rem}
+.sub-desc{font-size:.8rem;color:#aab8d4;line-height:1.7;margin-top:.45rem}
 .sub-flag{display:inline-block;font-size:.63rem;font-weight:700;padding:1px 8px;border-radius:20px;margin-left:.5rem;white-space:nowrap}
 .sub-flag.low{background:rgba(232,115,74,.18);color:#E8734A}
 .sub-flag.high{background:rgba(94,203,138,.16);color:#5ECB8A}
@@ -147,6 +148,12 @@ body::before{content:'';position:fixed;inset:0;
     <div class="top-eye">AI × PSYCHOLOGY</div>
     <h1>本当に人見知り？<br>人見知り度診断</h1>
     <div class="top-sub">緊張しやすさ × 関わりたい気持ち ／ 全20問 ／ 約3分</div>
+  </div>
+
+  <div class="hook">
+    「人見知りな気がするけど、そこまでじゃない気もする」<br>
+    そのギリギリのラインに立っている人ほど、答えが出にくいテーマです。<br>
+    この診断は、その「どっちだろう」を、スコアと境目の近さまで含めてはっきりさせるために作りました。
   </div>
 
   <div class="warn-box">
@@ -228,25 +235,25 @@ body::before{content:'';position:fixed;inset:0;
 // ══ 設問 ══ rev:true = 逆転項目
 // ax: N=緊張しやすさ（シャイネス） S=人と関わりたい気持ち（社交性）   sub: 下位要素（この診断での内訳）
 const QS=[
- {id:1, ax:'N', sub:'K', basis:'シャイネス（生理的反応）', rev:false, q:'初対面の人と話すとき、声が小さくなったり早口になったりすることが多い'},
- {id:2, ax:'S', sub:'Y', basis:'社交性（接近行動）', rev:false, q:'自分から友人や同僚に「ご飯行かない？」などと声をかけることが多い'},
- {id:3, ax:'N', sub:'K', basis:'シャイネス（生理的反応）', rev:false, q:'大勢の前で話す場面になると、手や声が震えることが多い'},
- {id:4, ax:'S', sub:'Y', basis:'社交性（接近行動）', rev:false, q:'連絡先を交換した人に、自分から次の約束を持ちかけることが多い'},
- {id:5, ax:'N', sub:'T', basis:'シャイネス（認知的干渉）', rev:false, q:'初対面の人と話すとき、何を話せばいいか考えすぎて、会話の間が空くことが多い'},
- {id:6, ax:'S', sub:'D', basis:'社交性（新奇場面への接近）', rev:false, q:'知らない人が多い集まりにも、自分から参加を決めることが多い'},
- {id:7, ax:'N', sub:'T', basis:'シャイネス（認知的干渉）', rev:false, q:'複数人で話しているとき、話すタイミングを逃して発言しないまま終わることが多い'},
- {id:8, ax:'S', sub:'D', basis:'社交性（新奇場面への接近）', rev:false, q:'初対面の人が多い場では、自分から話しかけに行くことが多い'},
- {id:9, ax:'N', sub:'M', basis:'シャイネス（行動の抑制）', rev:false, q:'注目される場面になると、視線をどこに向ければいいか分からなくなることが多い'},
- {id:10,ax:'S', sub:'H', basis:'社交性（対人接触への選好）', rev:false, q:'予定のない休日ができたとき、誰かを誘って過ごすことが多い'},
- {id:11,ax:'N', sub:'T', basis:'シャイネス（認知的干渉・逆転）', rev:true, q:'初対面の人とでも、思ったことをそのタイミングで言葉にできることが多い'},
- {id:12,ax:'S', sub:'Y', basis:'社交性（接近行動・逆転）', rev:true, q:'誘いは基本的に相手から来るのを待つことが多い'},
- {id:13,ax:'N', sub:'K', basis:'シャイネス（生理的反応・逆転）', rev:true, q:'人前で話すときも、いつもと変わらない声の大きさ・速さで話せることが多い'},
- {id:14,ax:'S', sub:'D', basis:'社交性（新奇場面への接近）', rev:false, q:'新しいコミュニティやイベントの情報を見て、実際に申し込むことが多い'},
- {id:15,ax:'N', sub:'T', basis:'シャイネス（認知的干渉）', rev:false, q:'誰かに見られながら作業すると、いつもより手が止まることが多い'},
+ {id:1, ax:'N', sub:'K', basis:'シャイネス（生理的反応）', rev:false, q:'初対面の相手と話した後、手のひらや背中にじんわり汗をかいていたことに気づく'},
+ {id:2, ax:'S', sub:'Y', basis:'社交性（接近行動）', rev:false, q:'「今度ご飯行こう」で終わらせず、自分から先に日程の候補を出すことが多い'},
+ {id:3, ax:'N', sub:'K', basis:'シャイネス（生理的反応）', rev:false, q:'人前で話す番が回ってくると分かった瞬間から、自分の心臓の音が気になり出す'},
+ {id:4, ax:'S', sub:'Y', basis:'社交性（接近行動）', rev:false, q:'連絡先を交換した相手に、その日のうちに自分からメッセージを送ることがある'},
+ {id:5, ax:'N', sub:'T', basis:'シャイネス（認知的干渉）', rev:false, q:'初対面の相手との沈黙が気まずくて、相手が黙るより先に次の話題を探してしまう'},
+ {id:6, ax:'S', sub:'D', basis:'社交性（新奇場面への接近）', rev:false, q:'行ったことのない場所の集まりでも「とりあえず行ってみよう」と決めることが多い'},
+ {id:7, ax:'N', sub:'T', basis:'シャイネス（認知的干渉）', rev:false, q:'言いたいことを頭の中で2〜3回言い換えているうちに、話題が次に進んでしまうことが多い'},
+ {id:8, ax:'S', sub:'D', basis:'社交性（新奇場面への接近）', rev:false, q:'初対面の人が多い場でも、自分から近くの人に話しかけに行くことが多い'},
+ {id:9, ax:'N', sub:'M', basis:'シャイネス（行動の抑制）', rev:false, q:'大勢に注目される場面になると、自分の手が急に「邪魔」に感じて置き場に困る'},
+ {id:10,ax:'S', sub:'H', basis:'社交性（対人接触への選好）', rev:false, q:'予定のない休日ができると、予定を埋める前にまず誰かを誘うことを考える'},
+ {id:11,ax:'N', sub:'T', basis:'シャイネス（認知的干渉・逆転）', rev:true, q:'初対面の相手との会話でも、思いついたことをその場ですぐ口に出せることが多い'},
+ {id:12,ax:'S', sub:'Y', basis:'社交性（接近行動・逆転）', rev:true, q:'誘いは基本的に、相手から来るのを待っていることが多い'},
+ {id:13,ax:'N', sub:'K', basis:'シャイネス（生理的反応・逆転）', rev:true, q:'人前で話したあと「意外と落ち着いて話してたね」と言われることが多い'},
+ {id:14,ax:'S', sub:'D', basis:'社交性（新奇場面への接近）', rev:false, q:'興味を持ったコミュニティやイベントを見つけたら、その場で申し込みボタンを押すことが多い'},
+ {id:15,ax:'N', sub:'T', basis:'シャイネス（認知的干渉）', rev:false, q:'誰かに作業を見られていると、普段ならしないようなミスをしてしまうことがある'},
  {id:16,ax:'S', sub:'D', basis:'社交性（新奇場面への接近・逆転）', rev:true, q:'知らない人が多いと分かっている場には、理由をつけて参加を避けることが多い'},
- {id:17,ax:'N', sub:'M', basis:'シャイネス（行動の抑制）', rev:false, q:'人前に立つと、手や足の置き場に困ることが多い'},
- {id:18,ax:'S', sub:'H', basis:'社交性（対人接触への選好）', rev:false, q:'一人で食事するより、誰かと食事する機会を優先することが多い'},
- {id:19,ax:'N', sub:'M', basis:'シャイネス（行動の抑制・逆転）', rev:true, q:'人に見られている場面でも、ふだんと同じように自然に動けることが多い'},
+ {id:17,ax:'N', sub:'M', basis:'シャイネス（行動の抑制）', rev:false, q:'人前に立つと、自分の歩き方や座り方が急にぎこちなく感じられることがある'},
+ {id:18,ax:'S', sub:'H', basis:'社交性（対人接触への選好）', rev:false, q:'一人で食事を済ませるより、誰かと一緒に食べる機会を自分からつくることが多い'},
+ {id:19,ax:'N', sub:'M', basis:'シャイネス（行動の抑制・逆転）', rev:true, q:'人に見られている場面でも、歩き方や所作が変わっている自覚はない'},
  {id:20,ax:'S', sub:'H', basis:'社交性（対人接触への選好・逆転）', rev:true, q:'予定のない時間ができると、誰にも連絡せず一人で過ごすことが多い'}
 ];
 
@@ -461,11 +468,29 @@ function showResult(){
   const rel=calcReliability(ans);
   const n=sc.pct.N, s=sc.pct.S;
 
+  function nb(v){
+    if(Math.abs(v-65)<=5) return v>=65?'M':'H';
+    if(Math.abs(v-40)<=5) return v>=40?'L':'M';
+    return null;
+  }
+  const bn=band(n), bs=band(s), nnAlt=nb(n), nsAlt=nb(s);
+  const alt=[];
+  if(nnAlt) alt.push({ax:'緊張しやすさ', v:n, key:nnAlt+bs});
+  if(nsAlt) alt.push({ax:'関わりたい気持ち', v:s, key:bn+nsAlt});
+
+  let verdict;
+  if(alt.length){
+    verdict = '境目に近い、まさに「ギリギリ」の結果でした。それでも、僅差の先に答えはあります。今日このスコアで出た以上、今のあなたは<strong style="color:'+t.color+'">「'+t.name+'」</strong>側です。下に、境目のもう一方の可能性も載せています。';
+  } else {
+    verdict = '迷う余地のない、はっきりした結果です。「人見知りかどうか」をずっと保留にしていたなら、これが今日の答えです。あなたは<strong style="color:'+t.color+'">「'+t.name+'」</strong>です。';
+  }
+
   let h='';
   h+='<div class="result-header">'
    + '<div class="result-label">診断結果 &nbsp;|&nbsp; '+key+'-'+sLow+'</div>'
    + '<div class="result-type" style="color:'+t.color+'">'+t.name+'</div>'
    + '<div class="result-one">'+t.one+'</div>'
+   + '<div class="result-verdict">'+verdict+'</div>'
    + '</div>';
 
   h+='<div class="sec" style="border-color:rgba(242,167,184,.28)">'
@@ -514,15 +539,6 @@ function showResult(){
    + '</div>';
 
   (function(){
-    function nb(v){
-      if(Math.abs(v-65)<=5) return v>=65?'M':'H';
-      if(Math.abs(v-40)<=5) return v>=40?'L':'M';
-      return null;
-    }
-    const alt=[];
-    const bn=band(n), bs=band(s), nn=nb(n), ns=nb(s);
-    if(nn) alt.push({ax:'緊張しやすさ', v:n, key:nn+bs});
-    if(ns) alt.push({ax:'関わりたい気持ち', v:s, key:bn+ns});
     if(alt.length){
       h+='<div class="rel-box" style="border-color:rgba(255,217,160,.35)"><div class="rel-top"><span class="rel-label">境目に近い結果です</span></div><div class="rel-note">';
       alt.forEach(function(x){
